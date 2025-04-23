@@ -55,6 +55,7 @@ pub enum Chain {
     SCROLL,
     VANA,
     STORY,
+    SONEIUM,
 }
 
 pub trait PriceOracle: Debug {
@@ -91,6 +92,7 @@ impl FromStr for Chain {
             "scroll" => Ok(Self::SCROLL),
             "vana" => Ok(Self::VANA),
             "story" => Ok(Self::STORY),
+            "Soneium" => Ok(Self::SONEIUM), 
             _ => Err(()),
         }
     }
@@ -158,6 +160,7 @@ impl Chain {
             534352 => Self::SCROLL,
             1480 => Self::VANA,
             1514 => Self::STORY,
+            1868 => Self::SONEIUM,
             31337 => Self::LOCAL,
             _ => return Err(anyhow!("Unknown chain id: {}", chain_id)),
         })
@@ -187,6 +190,7 @@ impl Chain {
             Chain::SCROLL => 534352,
             Chain::VANA => 1480,
             Chain::STORY => 1514,
+            Chain::SONEIUM => 1868,
             Chain::LOCAL => 31337,
         }
     }
@@ -216,6 +220,7 @@ impl Chain {
             Chain::SCROLL => "scroll",
             Chain::VANA => "vana",
             Chain::STORY => "story",
+            Chain::SONEIUM => "soneium",
         }
         .to_string()
     }
@@ -247,6 +252,7 @@ impl Chain {
             Chain::SCROLL => "https://rpc.ankr.com/scroll",
             Chain::VANA => "https://rpc.vana.org",
             Chain::STORY => "https://mainnet.storyrpc.io",
+            Chain::SONEIUM => "https://rpc.soneium.org",
             Chain::LOCAL => "http://localhost:8545",
         }
         .to_string()

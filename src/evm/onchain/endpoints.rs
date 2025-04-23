@@ -290,7 +290,7 @@ impl Chain {
             Chain::VANA => "https://api.vanascan.io/api/v2",
             Chain::STORY => "https://www.storyscan.xyz/api/v2",
             Chain::SONEIUM => "https://soneium.blockscout.com/api",
-            Chain::ASTAR => "https://astar.blockscout.com/api",
+            Chain::ASTAR => "https://astar.blockscout.com/api/v2/",
         }
         .to_string()
     }

@@ -56,6 +56,7 @@ pub enum Chain {
     VANA,
     STORY,
     SONEIUM,
+    ASTAR,
 }
 
 pub trait PriceOracle: Debug {
@@ -93,6 +94,7 @@ impl FromStr for Chain {
             "vana" => Ok(Self::VANA),
             "story" => Ok(Self::STORY),
             "Soneium" => Ok(Self::SONEIUM), 
+            "Astar" => Ok(Self::ASTAR),
             _ => Err(()),
         }
     }
@@ -161,6 +163,7 @@ impl Chain {
             1480 => Self::VANA,
             1514 => Self::STORY,
             1868 => Self::SONEIUM,
+            2006 => Self::ASTAR,
             31337 => Self::LOCAL,
             _ => return Err(anyhow!("Unknown chain id: {}", chain_id)),
         })
@@ -191,6 +194,7 @@ impl Chain {
             Chain::VANA => 1480,
             Chain::STORY => 1514,
             Chain::SONEIUM => 1868,
+            Chain::ASTAR=> 2006,
             Chain::LOCAL => 31337,
         }
     }
@@ -221,6 +225,7 @@ impl Chain {
             Chain::VANA => "vana",
             Chain::STORY => "story",
             Chain::SONEIUM => "soneium",
+            Chain::ASTAR  => "astar"
         }
         .to_string()
     }
@@ -253,6 +258,7 @@ impl Chain {
             Chain::VANA => "https://rpc.vana.org",
             Chain::STORY => "https://mainnet.storyrpc.io",
             Chain::SONEIUM => "https://rpc.soneium.org",
+            Chain::ASTAR => "https://evm.astar.network",
             Chain::LOCAL => "http://localhost:8545",
         }
         .to_string()
@@ -284,6 +290,7 @@ impl Chain {
             Chain::VANA => "https://api.vanascan.io/api/v2",
             Chain::STORY => "https://www.storyscan.xyz/api/v2",
             Chain::SONEIUM => "https://soneium.blockscout.com/api",
+            Chain::ASTAR => "https://astar.blockscout.com/api",
         }
         .to_string()
     }
@@ -411,7 +418,7 @@ impl ChainConfig for OnChainConfig {
         let pegged_token = self.get_pegged_token();
 
         match self.chain_name.as_str() {
-            "eth" | "arbitrum" | "scroll" | "soneium" => return pegged_token.get("WETH").unwrap().to_string(),
+            "eth" | "arbitrum" | "scroll" | "soneium" | "astar" => return pegged_token.get("WETH").unwrap().to_string(),
             "bsc" => return pegged_token.get("WBNB").unwrap().to_string(),
             "polygon" => return pegged_token.get("WMATIC").unwrap().to_string(),
             "vana" => return pegged_token.get("WVANA").unwrap().to_string(),
@@ -518,6 +525,17 @@ impl ChainConfig for OnChainConfig {
                 ("USDT", "0x1217bfe6c773eec6cc4a38b5dc45b92292b6e189"),
                 ("bridgedUSDT", "0x3a337a6ada9d885b6ad95ec48f9b75f197b5ae35"),
                 ("WIP", "0xf24e57b1cb00d98c31f04f86328e22e8fca457fb"),
+            ]
+            .iter()
+            .map(|(k, v)| (k.to_string(), v.to_string()))
+            .collect(),
+
+            "astar" => [
+                ("WETH", "0x81ecac0d6be0550a00ff064a4f9dd2400585fe9c"),
+                ("USDC", "0x6a2d262d56735dba19dd70682b39f6be9a931d98"),
+                ("USDT", "0x3795c36e7d12a8c252a20c5a7b455f7c57b60283"),
+                ("bridgedUSDT", "0x733ebcc6df85f8266349defd0980f8ced9b45f35"),
+                ("WIP", "0x6de33698e9e9b787e09d3bd7771ef63557e148bb"),
             ]
             .iter()
             .map(|(k, v)| (k.to_string(), v.to_string()))

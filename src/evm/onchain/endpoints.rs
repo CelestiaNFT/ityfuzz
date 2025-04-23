@@ -283,6 +283,7 @@ impl Chain {
             Chain::SCROLL => "https://api.scrollscan.com/api",
             Chain::VANA => "https://api.vanascan.io/api/v2",
             Chain::STORY => "https://www.storyscan.xyz/api/v2",
+            Chain::SONEIUM => "https://soneium.blockscout.com/api",
         }
         .to_string()
     }

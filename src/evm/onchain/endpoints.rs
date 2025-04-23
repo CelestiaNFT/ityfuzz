@@ -513,12 +513,8 @@ impl ChainConfig for OnChainConfig {
              "soneium" => [
                 ("WETH", "0x4200000000000000000000000000000000000006"),
                 ("uWETH", "0x2cae934a1e84f693fbb78ca5ed3b0a6893259441"),
-                ("storyWETH", "0x2D08d948fC0BD2Db5411E8Ab3c49E0bB89A2B428"),
                 ("USDC.e", "0xba9986d2381edf1da03b0b9c1f8b00dc4aacc369"),
                 ("USDC", "0x0555e30da8f98308edb960aa94c0db47230d2b9c"),
-                ("storyUSDC", "0x968B9a5603ddEb2A78Aa08182BC44Ece1D9E5bf0"),
-                ("uStoryUSDC", "0xa9651875651Ff7F303605C23EF5c20C8f7BE8266"),
-                ("sdaiUSDC", "0x06578bE47CF7D19784A07DB64DCF95B84EE88671"),
                 ("USDT", "0x1217bfe6c773eec6cc4a38b5dc45b92292b6e189"),
                 ("bridgedUSDT", "0x3a337a6ada9d885b6ad95ec48f9b75f197b5ae35"),
                 ("WIP", "0xf24e57b1cb00d98c31f04f86328e22e8fca457fb"),

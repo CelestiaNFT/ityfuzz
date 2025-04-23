@@ -225,7 +225,7 @@ impl Chain {
             Chain::VANA => "vana",
             Chain::STORY => "story",
             Chain::SONEIUM => "soneium",
-            Chain::ASTAR  => "astar"
+            Chain::ASTAR  => "astar",
         }
         .to_string()
     }
